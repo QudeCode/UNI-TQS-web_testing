@@ -7,8 +7,11 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
+import org.testng.Assert;
 
 public class LoginSteps {
 
@@ -24,24 +27,32 @@ public class LoginSteps {
 
     @And("the user accepts the cookies")
     public void theUserAcceptsTheCookies() {
-        driver.findElement(By.cssSelector("button[data-t-click=''][data-t='continueWithoutAcceptingBtn']")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-t-click=''][data-t='continueWithoutAcceptingBtn']"))).click();
     }
+
 
     @When("the user clicks the login option")
     public void theUserClicksTheLoginOption() {
-        driver.findElement(By.cssSelector("button.button--toW5-square")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        driver.findElement(By.cssSelector("button.button--type-primary.button--mode-brand")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginModalForm")));
     }
 
     @And("^the user enters (.*) and (.*)")
-    public void theUserEntersUserAndPassword(String user, String password) {
-        driver.findElement(By.id("loginModalForm-identity")).sendKeys(user);
-        driver.findElement(By.id("loginModalForm-password")).sendKeys(password);;
+    public void theUserEntersUsernameAndPassword(String username, String password) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.findElement(By.id("loginModalForm-identity")).sendKeys(username);
+        driver.findElement(By.id("loginModalForm-password")).sendKeys(password);
     }
 
     @And("the user clicks the submit button")
     public void theUserClicksTheSubmitButton() {
-        
+        driver.findElement(By.cssSelector("button.cept-login-submit")).click();
     }
+
+
 
     @Then("session starts")
     public void sessionStarts() {
