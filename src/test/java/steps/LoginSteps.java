@@ -12,25 +12,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import org.testng.Assert;
+import tests.RunTests;
 
 public class LoginSteps {
 
-    WebDriver driver;
-
-    @Given("the user is in the index page")
-    public void theUserIsInTheIndexPage() {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-        System.setProperty("webdriver.http.factory", "jdk-http-client");
-        driver = new ChromeDriver();
-        driver.navigate().to("https://www.chollometro.com");
-    }
-
-    @And("the user accepts the cookies")
-    public void theUserAcceptsTheCookies() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-t-click=''][data-t='continueWithoutAcceptingBtn']"))).click();
-    }
-
+    WebDriver driver = RunTests.driver;
 
     @When("the user clicks the login option")
     public void theUserClicksTheLoginOption() {
@@ -52,12 +38,13 @@ public class LoginSteps {
         driver.findElement(By.cssSelector("button.cept-login-submit")).click();
     }
 
+    @Then("^session starts with the username (.*)")
+    public void sessionStarts(String username) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[data-t='userDropdown']"))).click();
+        String web_username = driver.findElement(By.className("navDropDown-head")).getText();
 
-    @Then("session starts")
-    public void sessionStarts() {
-
+        Assert.assertEquals(web_username, username);
     }
-
-
 }
