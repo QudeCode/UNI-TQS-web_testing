@@ -11,11 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 //@CucumberOptions(features="src/test/java/features/", glue="steps")
-<<<<<<< HEAD
 @CucumberOptions(features="src/test/java/features/", glue="steps")
-=======
-@CucumberOptions(features="src/test/java/features", glue="steps")
->>>>>>> origin/1569183
 public class RunTests extends AbstractTestNGCucumberTests {
 
     public static WebDriver driver;

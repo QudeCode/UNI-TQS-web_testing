@@ -1,4 +1,5 @@
 Feature: Login
+
   Scenario Outline: The user forgot the password
     Given the user is in the index page
     And the user accepts the cookies
@@ -6,6 +7,7 @@ Feature: Login
     And the user clicks on Forgot Password
     And the user enters <email> for password recovery
     And the user clicks the Recover Password button
+
     Examples:
       | email                             |
       | mail.for.testing.123321@gmail.com |
