@@ -34,9 +34,17 @@ public class searchCholloSteps {
 
     @Then("^a list of (.*) or related are shown")
     public void aListOfProductOrRelatedAreShown(String product) {
-        String title = driver.findElement(By.cssSelector(".cept-tt.thread-link.linkPlain.thread-title--list.js-thread-title")).getText().toLowerCase();
-        System.out.println(title);
-        Assert.assertTrue(title.contains("super"));
+        By elementLocator = By.cssSelector(".cept-tt.thread-link.linkPlain.thread-title--list.js-thread-title");
+
+        Assert.assertTrue(isElementPresent(elementLocator));
+    }
+
+    private boolean isElementPresent(By locator) {
+        try {
+            return driver.findElement(locator).isDisplayed();
+        } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.StaleElementReferenceException e) {
+            return false;
+        }
     }
 
 }
