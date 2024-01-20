@@ -1,6 +1,6 @@
 Feature: Login
 
-Scenario Outline: Login
+Scenario Outline: Success Login
   Given the user is in the index page
   #And the user accepts the cookies
   When the user clicks the login option

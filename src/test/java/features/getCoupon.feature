@@ -10,4 +10,8 @@ Scenario: codigos de descuento
 
 Scenario: stores
   Given the user is in the index page
-  #And the user accepts the cookies
+  And the user accepts the cookies
+  When the user clicks the menu option
+  And the user selects a store for a coupon
+  #Then can get a coupon
+
