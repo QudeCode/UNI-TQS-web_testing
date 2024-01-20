@@ -59,4 +59,28 @@ public class LoginSteps {
 
         Assert.assertTrue(errorMessageElement.isDisplayed(), "El mensaje de error no está presente o no es visible.");
     }
+
+    @And("the user clicks on Forgot Password")
+    public void theUserClicksOnForgotPassword() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Encontrar y hacer clic en el botón "Forgot Password"
+       wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".button.button--type-text.button--mode-secondary.button--size-s.height--all-auto.text--trans-n"))).click();
+    }
+
+    @And("^the user enters (.*) for password recovery")
+    public void theUserEntersEmailForPasswordRecovery(String email) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Encontrar el campo de entrada de correo electrónico y escribir la dirección de correo electrónico
+        WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input.width--all-12.size--all-s")));
+        emailInput.sendKeys(email);
+    }
+
+    @And("the user clicks the Recover Password button")
+    public void theUserClicksTheRecoverPasswordButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("width--all-12 button button--shape-circle button--type-primary button--mode-brand cept-submit-reset-password"))).click();
+    }
 }
