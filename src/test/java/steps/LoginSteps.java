@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -46,5 +47,16 @@ public class LoginSteps {
         String web_username = driver.findElement(By.className("navDropDown-head")).getText();
 
         Assert.assertEquals(web_username, username);
+    }
+
+    @Then("an error appears")
+    public void anErrorAppears() {
+        By errorMessageLocator = By.cssSelector("p.formList-info.formList-info--error");
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement errorMessageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessageLocator));
+
+        Assert.assertTrue(errorMessageElement.isDisplayed(), "El mensaje de error no está presente o no es visible.");
     }
 }
