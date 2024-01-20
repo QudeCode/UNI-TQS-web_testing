@@ -4,17 +4,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import tests.RunTests;
 
-import java.time.Duration;
-
-public class applyCouponSteps {
+public class getCouponSteps {
 
     WebDriver driver = RunTests.driver;
 
@@ -25,12 +20,14 @@ public class applyCouponSteps {
 
     @And("clicks the codigos de descuento option")
     public void clicksTheCodigosDeDescuentoOption() {
+        // Haz clic en el enlace "codigos de descuento" para abrir una nueva pestaña
         driver.findElement(By.cssSelector("a.button--type-tertiary.button--mode-white.button--shape-circle.space--l-0.space--ml-2.space--mt-1")).click();
     }
-
     @And("clicks on No button")
     public void clicksOnNoButton() {
 
+        Actions actions = new Actions(driver);
+        actions.sendKeys("\uE00C").perform(); // Código de tecla "Esc"
     }
 
     @Then("can get a coupon")

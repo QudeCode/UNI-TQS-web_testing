@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="395e61a9-45cb-47a6-8e22-60702be88da8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/features/applyCoupon.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/steps/applyCouponSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/features/searchChollo.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/searchChollo.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/steps/searchCholloSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/steps/searchCholloSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/applyCoupon.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/getCoupon.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/steps/applyCouponSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/steps/applyCouponSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/RunTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/RunTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -1,7 +1,6 @@
-Feature: Apply Coupon
+Feature: Get Coupon
 
-Scenario: applyCoupon
-
+Scenario: codigos de descuento
 
 Given the user is in the index page
 And the user accepts the cookies
@@ -10,8 +9,4 @@ And clicks the codigos de descuento option
 And clicks on No button
 Then can get a coupon
 
-
-#And the user enters <username> and <password>
-#Examples:
-# | username          | password      |
-#| tqs_testing       | testing_123321|
+Scenario: stores
