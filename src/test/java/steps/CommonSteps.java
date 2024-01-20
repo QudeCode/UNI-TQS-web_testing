@@ -24,4 +24,8 @@ public class CommonSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-t-click=''][data-t='continueWithoutAcceptingBtn']"))).click();
     }
+
+    @And("the user logs in")
+    public void theUserLogsIn() {
+    }
 }
