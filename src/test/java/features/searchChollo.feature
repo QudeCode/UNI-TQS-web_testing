@@ -8,7 +8,7 @@ Feature: Search Chollo
     Then a list of <product> or related are shown
 
     Examples:
-      | product |
-      | laptop  |
-      | nintendo|
+      | product  |
+      | laptop   |
+      | nintendo |
 
