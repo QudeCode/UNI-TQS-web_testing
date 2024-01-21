@@ -18,6 +18,7 @@ import java.util.List;
 public class editProfile {
 
     WebDriver driver = RunTests.driver;
+    String oldDescription = "";
 
     @When("the user navigates to the profile edit page")
     public void theUserNavigatesToTheProfileEditPage() {
@@ -56,7 +57,7 @@ public class editProfile {
 
         // Sleep 2s
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
             driver.navigate().refresh();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -76,5 +77,39 @@ public class editProfile {
         }
 
         Assert.assertEquals(newDescription, actualDescription);
+    }
+
+    @And("the user press cancel")
+    public void theUserPressCancel() {
+        List<WebElement> spans = driver.findElements(By.cssSelector("span.formList-static.formList-static--em.box--all-b.space--b-2"));
+        String actualDescription = "";
+        if (spans.size() >= 2) {
+            WebElement segundoSpan = spans.get(1); // El segundo span (índice 1)
+            this.oldDescription = segundoSpan.getText();
+            //System.out.println(actualDescription);
+        } else {
+            System.out.println("No se encontraron suficientes elementos span");
+        }
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement cancelButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Cancelar')]")));
+        cancelButton.click();
+
+    }
+
+    @Then("the profile shouldn't be updated")
+    public void theProfileShouldnTBeUpdated() {
+        List<WebElement> spans = driver.findElements(By.cssSelector("span.formList-static.formList-static--em.box--all-b.space--b-2"));
+        String actualDescription = "";
+        if (spans.size() >= 2) {
+            WebElement segundoSpan = spans.get(1); // El segundo span (índice 1)
+            actualDescription = segundoSpan.getText();
+            //System.out.println(actualDescription);
+        } else {
+            System.out.println("No se encontraron suficientes elementos span");
+        }
+
+        Assert.assertEquals(this.oldDescription,actualDescription);
     }
 }

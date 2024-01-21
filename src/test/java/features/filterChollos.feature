@@ -1,11 +1,16 @@
 Feature: Filter Chollos
 
-  Scenario: Change View
+  Scenario Outline: List View
     Given the user is in the index page
-    #And the user accepts the cookies
+    And the user accepts the cookies
     When the user clicks the filter option
-    And selects the new vision type
-    Then the products should be shown in a different way
+    And selects <view> view
+    Then the products should be shown as <view>
+
+  Examples:
+    | view |
+    | list |
+    | text |
 
   Scenario: Hide Sold Out Products
     Given the user is in the index page
