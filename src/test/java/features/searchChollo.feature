@@ -10,5 +10,3 @@ And the user press enter
 
 Examples:
   | product |
-
-

@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeClass;
 @CucumberOptions(features="src/test/java/features", glue="steps")
 public class RunTests extends AbstractTestNGCucumberTests {
 
+    boolean quitDrivers = false;
     public static WebDriver driver;
 
     // Inicializar el driver antes de ejecutar cualquier escenario
@@ -35,13 +36,17 @@ public class RunTests extends AbstractTestNGCucumberTests {
     @After
     public void clear() {
 
-        driver.quit();
+        if(quitDrivers){
+            driver.quit();
+        }
     }
 
     // Cerrar el driver después de que se hayan ejecutado todos los escenarios
     @AfterClass
     public void clearAll() {
 
-        driver.quit();
+        if(quitDrivers){
+            driver.quit();
+        }
     }
 }
