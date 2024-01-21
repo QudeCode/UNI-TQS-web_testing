@@ -48,18 +48,6 @@ public class LoginSteps {
 
         Assert.assertEquals(web_username, username);
     }
-
-    @Then("an error appears")
-    public void anErrorAppears() {
-        By errorMessageLocator = By.cssSelector("p.formList-info.formList-info--error");
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        WebElement errorMessageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessageLocator));
-
-        Assert.assertTrue(errorMessageElement.isDisplayed(), "El mensaje de error no está presente o no es visible.");
-    }
-
     @And("the user clicks on Forgot Password")
     public void theUserClicksOnForgotPassword() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -82,5 +70,6 @@ public class LoginSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("width--all-12 button button--shape-circle button--type-primary button--mode-brand cept-submit-reset-password"))).click();
+
     }
 }
