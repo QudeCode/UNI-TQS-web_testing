@@ -1,7 +1,6 @@
 package steps;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +16,7 @@ public class saveChollo {
 
     WebDriver driver = RunTests.driver;
 
-    @And("the user clicks on the save button on the first product")
+    @And("the user clicks on the save button")
     public void theUserClicksOnSaveButton() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -27,10 +26,9 @@ public class saveChollo {
         // Puedes usar wait.until(...) para esperar a que algún elemento aparezca o cambie.
     }
 
-    @And("the user goes to their saved Chollos")
+    @And("the user goes to their saved deals")
     public void theUserGoesToUserProfile() {
-        // Encontrar y hacer clic en el botón navDropDown-trigger
-        WebElement navDropDownTrigger = driver.findElement(By.cssSelector("button.navDropDown-trigger.aGrid"));
+        WebElement navDropDownTrigger = driver.findElement(By.cssSelector("button.avatar js-avatar navDropDown-avatar avatar--type-nav avatar--type-nav--selected js-navDropDown-avatar-selected"));
         navDropDownTrigger.click();
 
         // Esperar a que se cargue la página o realizar otras acciones según sea necesario.
@@ -41,17 +39,11 @@ public class saveChollo {
     }
 
 
-    @Then("the saved chollo should be displayed")
-    public void theSavedCholloShouldBeDisplayed() {
-        
-    }
+    @When("^the user enters (.*) on the search")
+    public void theUserEntersProductOnTheSearch(String product) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-    @When("the user unsaves the chollo")
-    public void theUserUnsavesTheChollo() {
-        
-    }
-
-    @Then("the Chollo should be removed from the saved Chollos")
-    public void theCholloShouldBeRemovedFromTheSavedDeals() {
+        WebElement searchInput = driver.findElement(By.name("q"));
+        searchInput.sendKeys(product);
     }
 }
