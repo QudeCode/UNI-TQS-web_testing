@@ -1,20 +1,9 @@
 Feature: Login
 
-  Scenario Outline: The user forgot the password
-    Given the user is in the index page
-    #And the user accepts the cookies
-    When the user clicks the login option
-    And the user clicks on Forgot Password
-    And the user enters <email> for password recovery
-    And the user clicks the Recover Password button
-
-    Examples:
-      | email                             |
-      | mail.for.testing.123321@gmail.com |
-
   Scenario Outline: Failure Login
     Given the user is in the index page
-    #And the user accepts the cookies
+    And the user accepts the cookies
+    And without login
     When the user clicks the login option
     And the user enters <bad_username> and <password>
     And the user clicks the submit button
@@ -26,7 +15,8 @@ Feature: Login
 
   Scenario Outline: Success Login
     Given the user is in the index page
-    #And the user accepts the cookies
+    And the user accepts the cookies
+    And without login
     When the user clicks the login option
     And the user enters <username> and <password>
     And the user clicks the submit button
@@ -35,3 +25,23 @@ Feature: Login
     Examples:
       | username          | password      |
       | tqs_testing       | testing_123321|
+
+  Scenario: Log Out
+    Given the user is in the index page
+    #And the user accepts the cookies
+    And logged in
+    When the user clicks the user option
+    And presses log out
+    Then it should log out
+
+  Scenario Outline: The user forgot the password
+    Given the user is in the index page
+    And the user accepts the cookies
+    When the user clicks the login option
+    And the user clicks on Forgot Password
+    And the user enters <email> for password recovery
+    And the user clicks the Recover Password button
+
+    Examples:
+      | email                             |
+      | mail.for.testing.123321@gmail.com |
