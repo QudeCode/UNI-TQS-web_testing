@@ -11,7 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 //@CucumberOptions(features="src/test/java/features/", glue="steps")
-@CucumberOptions(features="src/test/java/features/filterChollos.feature", glue="steps")
+@CucumberOptions(features="src/test/java/features/", glue="steps")
 public class RunTests extends AbstractTestNGCucumberTests {
 
     boolean quitDrivers = false;
