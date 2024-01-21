@@ -27,5 +27,17 @@ public class CommonSteps {
 
     @And("the user logs in")
     public void theUserLogsIn() {
+        String username = "tqs_testing";
+        String password = "testing_123321";
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        driver.findElement(By.cssSelector("button.button--type-primary.button--mode-brand")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginModalForm")));
+
+        driver.findElement(By.id("loginModalForm-identity")).sendKeys(username);
+        driver.findElement(By.id("loginModalForm-password")).sendKeys(password);
+
+        driver.findElement(By.cssSelector("button.cept-login-submit")).click();
     }
 }

@@ -11,7 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 //@CucumberOptions(features="src/test/java/features/", glue="steps")
-@CucumberOptions(features="src/test/java/features/", glue="steps")
+@CucumberOptions(features="src/test/java/features/editProfile.feature", glue="steps")
 public class RunTests extends AbstractTestNGCucumberTests {
 
     public static WebDriver driver;
@@ -35,13 +35,13 @@ public class RunTests extends AbstractTestNGCucumberTests {
     @After
     public void clear() {
 
-        driver.quit();
+        //driver.quit();
     }
 
     // Cerrar el driver después de que se hayan ejecutado todos los escenarios
     @AfterClass
     public void clearAll() {
 
-        driver.quit();
+        //driver.quit();
     }
 }

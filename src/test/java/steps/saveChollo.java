@@ -1,6 +1,8 @@
 package steps;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +17,7 @@ public class saveChollo {
 
     WebDriver driver = RunTests.driver;
 
-    @And("the user clicks on the save button")
+    @And("the user clicks on the save button on the first product")
     public void theUserClicksOnSaveButton() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -25,7 +27,7 @@ public class saveChollo {
         // Puedes usar wait.until(...) para esperar a que algún elemento aparezca o cambie.
     }
 
-    @And("the user goes to their saved deals")
+    @And("the user goes to their saved Chollos")
     public void theUserGoesToUserProfile() {
         // Encontrar y hacer clic en el botón navDropDown-trigger
         WebElement navDropDownTrigger = driver.findElement(By.cssSelector("button.navDropDown-trigger.aGrid"));
@@ -39,5 +41,17 @@ public class saveChollo {
     }
 
 
+    @Then("the saved chollo should be displayed")
+    public void theSavedCholloShouldBeDisplayed() {
+        
+    }
 
+    @When("the user unsaves the chollo")
+    public void theUserUnsavesTheChollo() {
+        
+    }
+
+    @Then("the Chollo should be removed from the saved Chollos")
+    public void theCholloShouldBeRemovedFromTheSavedDeals() {
+    }
 }

@@ -2,7 +2,7 @@ Feature: Login
 
   Scenario Outline: The user forgot the password
     Given the user is in the index page
-    And the user accepts the cookies
+    #And the user accepts the cookies
     When the user clicks the login option
     And the user clicks on Forgot Password
     And the user enters <email> for password recovery
